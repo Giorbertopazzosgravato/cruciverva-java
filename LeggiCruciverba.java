@@ -15,27 +15,25 @@ public class LeggiCruciverba {
         String rowColsString = fin.readLine();
         rowCols = getRowCols(rowColsString);
         System.out.println(rowCols[0] + " " + rowCols[1]);
-        return new Cruciverba(rowCols[0], rowCols[1]);
+        return new Cruciverba(rowCols[0], rowCols[1], f);
     }
     private int[] getRowCols(String s)
     {
         boolean isSecondNumber = false;
         String firstNumber = "", secondNumber = "";
-        for (int i = 0; i < s.length() - 1; i++)
-        {
-            
-            if(s.charAt(i) == ' ')
-            {
+        for (int i = 0; i < s.length(); i++){
+            if(s.charAt(i) == ' '){
                 isSecondNumber = true;
             }
-            else if (!isSecondNumber) 
-            {
+            else if (!isSecondNumber) {
                 firstNumber += s.charAt(i);
             }
-            else
-            {
+            else{
                 secondNumber += s.charAt(i);
             }
+        }
+        if (Integer.parseInt(firstNumber) > 50 || Integer.parseInt(firstNumber) < 2 || Integer.parseInt(secondNumber) > 50 || Integer.parseInt(secondNumber) < 2) {
+            throw new RuntimeException("dimensioni non corrette >:(");
         }
         return new int[]{Integer.parseInt(firstNumber), Integer.parseInt(secondNumber)};
     }
