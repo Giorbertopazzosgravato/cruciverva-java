@@ -14,9 +14,8 @@ public class LeggiCruciverba {
         int rowCols[];
         String rowColsString = fin.readLine();
         rowCols = getRowCols(rowColsString);
-        System.out.println(rowCols[0] + " " + rowCols[1]);
         char[][] contenuto = leggiCruciverbaDaFile(rowCols[0], rowCols[1]);;
-        return new Cruciverba(rowCols[0], rowCols[1]);
+        return new Cruciverba(contenuto);
     }
     private int[] getRowCols(String s)
     {
@@ -46,7 +45,6 @@ public class LeggiCruciverba {
         while (!eof) {
             try {
                 String rigaDelFile = fin.readLine();
-                System.out.println("s value: " + rigaDelFile);
                 for (int i = 0; i < rigaDelFile.length(); i++) {
                     try {
                         cruciverba[j][i] = rigaDelFile.charAt(i);
