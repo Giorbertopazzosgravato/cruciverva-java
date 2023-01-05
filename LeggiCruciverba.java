@@ -15,7 +15,8 @@ public class LeggiCruciverba {
         String rowColsString = fin.readLine();
         rowCols = getRowCols(rowColsString);
         System.out.println(rowCols[0] + " " + rowCols[1]);
-        return new Cruciverba(rowCols[0], rowCols[1], f);
+        char[][] contenuto = leggiCruciverbaDaFile(rowCols[0], rowCols[1]);;
+        return new Cruciverba(rowCols[0], rowCols[1]);
     }
     private int[] getRowCols(String s)
     {
@@ -36,5 +37,28 @@ public class LeggiCruciverba {
             throw new RuntimeException("dimensioni non corrette >:(");
         }
         return new int[]{Integer.parseInt(firstNumber), Integer.parseInt(secondNumber)};
+    }
+    private char[][] leggiCruciverbaDaFile(int rows, int cols)
+    {
+        char[][] cruciverba = new char[rows][cols];
+        boolean eof = false;
+        int j = 0;
+        while (!eof) {
+            try {
+                String rigaDelFile = fin.readLine();
+                System.out.println("s value: " + rigaDelFile);
+                for (int i = 0; i < rigaDelFile.length(); i++) {
+                    try {
+                        cruciverba[j][i] = rigaDelFile.charAt(i);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                j++;
+            } catch (Exception e) {
+                eof = true;
+            }
+        }
+        return cruciverba;
     }
 }
