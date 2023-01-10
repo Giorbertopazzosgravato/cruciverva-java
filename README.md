@@ -1,4 +1,4 @@
 # cruciverva-java
 cruciverba in giava 
 todo: 
-- tutto;
+- nulla >:D;
